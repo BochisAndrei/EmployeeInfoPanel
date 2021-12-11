@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="pac.Person" table="PERSONS">
+		<id name="id" type="int">
+			<column name="ID" />
+		</id>
+		<set name="excursions" cascade="all">
+			<key column="id_person" />
+			<one-to-many class="pac.Excursion" />
+		</set>
+		<property name="name" type="java.lang.String">
+			<column name="NAME" />
+		</property>
+		<property name="age" column="AGE" type="int" />
+	</class>
+	<class name="pac.Excursion" table="excursions">
+		<id name="id" column="id_excursion" type="int" />
+		<property name="year" column="year" type="int" />
+		<property name="destination" column="destination"
+			type="string" />
+	</class>
+</hibernate-mapping>
